@@ -1,6 +1,33 @@
 // Govinda Bot Website JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
+    // --- MODAL ---
+    const modal = document.getElementById('modal');
+    const modalCloseBtn = document.getElementById('modal-close');
+
+    function showModal(icon, title, text) {
+        document.getElementById('modal-icon').innerHTML = icon;
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-text').innerHTML = text; // Use innerHTML to allow for line breaks
+        modal.classList.add('active');
+    }
+
+    function hideModal() {
+        modal.classList.remove('active');
+    }
+
+    modalCloseBtn.addEventListener('click', hideModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            hideModal();
+        }
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            hideModal();
+        }
+    });
+
     // Mobile Navigation Toggle
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -75,36 +102,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     label: 'Propriedade do Cliente',
                     data: [2, 3, 10],
-                    backgroundColor: '#1FB8CD',
-                    borderColor: '#1FB8CD',
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
                     borderWidth: 2
                 },
                 {
                     label: 'Inovação Tecnológica',
                     data: [4, 6, 10],
-                    backgroundColor: '#FFC185',
-                    borderColor: '#FFC185',
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                    borderColor: 'rgba(249, 115, 22, 1)',
                     borderWidth: 2
                 },
                 {
                     label: 'Descentralização',
                     data: [1, 2, 10],
-                    backgroundColor: '#B4413C',
-                    borderColor: '#B4413C',
+                    backgroundColor: 'rgba(147, 51, 234, 0.2)',
+                    borderColor: 'rgba(147, 51, 234, 1)',
                     borderWidth: 2
                 },
                 {
                     label: 'Modelo Econômico',
                     data: [3, 5, 10],
-                    backgroundColor: '#5D878F',
-                    borderColor: '#5D878F',
+                    backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                    borderColor: 'rgba(34, 197, 94, 1)',
                     borderWidth: 2
                 },
                 {
                     label: 'Customização',
                     data: [5, 7, 10],
-                    backgroundColor: '#DB4545',
-                    borderColor: '#DB4545',
+                    backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                    borderColor: 'rgba(239, 68, 68, 1)',
                     borderWidth: 2
                 }
             ]
@@ -257,7 +284,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Setup footer links
     setupFooterLinks();
-});
 
 // Setup CTA Buttons - Fixed function
 function setupCTAButtons() {
@@ -322,7 +348,7 @@ function setupFooterLinks() {
                 } else if (linkText === 'Documentação') {
                     showDocsModal();
                 } else {
-                    alert('🔗 Link em construção\n\nEste link será ativado em breve!');
+                    showModal('🔗', 'Link em Construção', 'Este link será ativado em breve!');
                 }
             });
         }
@@ -331,36 +357,38 @@ function setupFooterLinks() {
 
 // Modal functions (placeholders - would integrate with actual Web3 functionality)
 function showNFTModal() {
-    alert('🚀 Marketplace NFT\n\nRedirecionando para nossa plataforma de compra de NFTs onde você poderá adquirir seu passe vitalício do Govinda Bot!\n\n✨ Benefícios do NFT:\n• Acesso vitalício ao chatbot\n• Criação ilimitada de fluxos\n• Configuração personalizada\n• Suporte premium');
+    showModal('🚀', 'Marketplace NFT', 'Redirecionando para nossa plataforma de compra de NFTs onde você poderá adquirir seu passe vitalício do Govinda Bot!<br><br><b>Benefícios do NFT:</b><br>• Acesso vitalício ao chatbot<br>• Criação ilimitada de fluxos<br>• Configuração personalizada<br>• Suporte premium');
 }
 
 function handlePrivyLogin() {
-    alert('🔐 Privy Login\n\nConectando com Privy.io para autenticação descentralizada...\n\n🛡️ Segurança garantida:\n• Autenticação Web3\n• Controle total dos dados\n• Sem senhas centralizadas');
+    showModal('🔐', 'Privy Login', 'Conectando com Privy.io para autenticação descentralizada...<br><br><b>Segurança garantida:</b><br>• Autenticação Web3<br>• Controle total dos dados<br>• Sem senhas centralizadas');
 }
 
 function showTokenModal() {
-    alert('🪙 Loja de Tokens\n\nCompre tokens para créditos do sistema!\n\n💰 Benefícios:\n• Sistema flexível de créditos\n• Staking para recompensas\n• Participação na governança DAO\n• Sem mensalidades fixas');
+    showModal('🪙', 'Loja de Tokens', 'Compre tokens para créditos do sistema!<br><br><b>Benefícios:</b><br>• Sistema flexível de créditos<br>• Staking para recompensas<br>• Participação na governança DAO<br>• Sem mensalidades fixas');
 }
 
 function showDemoModal() {
-    alert('🎯 Demonstração Interativa\n\nConheça todas as funcionalidades do Govinda Bot:\n\n🤖 Recursos disponíveis:\n• Fluxos complexos de atendimento\n• LLM especializado\n• Respostas contextualizadas\n• Interface visual intuitiva');
+    showModal('🎯', 'Demonstração Interativa', 'Conheça todas as funcionalidades do Govinda Bot:<br><br><b>Recursos disponíveis:</b><br>• Fluxos complexos de atendimento<br>• LLM especializado<br>• Respostas contextualizadas<br>• Interface visual intuitiva');
 }
 
 function showDiscordModal() {
-    alert('💬 Comunidade Discord\n\nJunte-se à nossa comunidade no Discord!\n\n🎮 Benefícios:\n• Suporte em tempo real\n• Networking com outros usuários\n• Atualizações exclusivas\n• Participação em eventos');
+    showModal('💬', 'Comunidade Discord', 'Junte-se à nossa comunidade no Discord!<br><br><b>Benefícios:</b><br>• Suporte em tempo real<br>• Networking com outros usuários<br>• Atualizações exclusivas<br>• Participação em eventos');
 }
 
 function showTelegramModal() {
-    alert('📱 Canal Telegram\n\nSiga nosso canal oficial no Telegram!\n\n📢 Conteúdo:\n• Notícias e atualizações\n• Tutoriais e dicas\n• Anúncios importantes\n• Suporte direto');
+    showModal('📱', 'Canal Telegram', 'Siga nosso canal oficial no Telegram!<br><br><b>Conteúdo:</b><br>• Notícias e atualizações<br>• Tutoriais e dicas<br>• Anúncios importantes<br>• Suporte direto');
 }
 
 function showGitHubModal() {
-    alert('💻 Código Open Source\n\nConfira nosso código no GitHub!\n\n🔧 Disponível:\n• Documentação técnica\n• Código fonte\n• Guias de contribuição\n• Issues e roadmap');
+    showModal('💻', 'Código Open Source', 'Confira nosso código no GitHub!<br><br><b>Disponível:</b><br>• Documentação técnica<br>• Código fonte<br>• Guias de contribuição<br>• Issues e roadmap');
 }
 
 function showDocsModal() {
-    alert('📚 Documentação Técnica\n\nAcesse nossa documentação completa!\n\n📖 Conteúdo:\n• Guias de instalação\n• API Reference\n• Tutoriais passo a passo\n• FAQ técnico');
+    showModal('📚', 'Documentação Técnica', 'Acesse nossa documentação completa!<br><br><b>Conteúdo:</b><br>• Guias de instalação<br>• API Reference<br>• Tutoriais passo a passo<br>• FAQ técnico');
 }
+
+});
 
 // Utility function for smooth animations
 function easeOutCubic(t) {
