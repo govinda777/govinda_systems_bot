@@ -102,22 +102,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     label: 'Propriedade do Cliente',
                     data: [2, 3, 10],
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                    borderColor: 'rgba(59, 130, 246, 1)',
+                    backgroundColor: 'rgba(109, 40, 217, 0.2)',
+                    borderColor: 'rgba(109, 40, 217, 1)',
                     borderWidth: 2
                 },
                 {
                     label: 'Inovação Tecnológica',
                     data: [4, 6, 10],
-                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
-                    borderColor: 'rgba(249, 115, 22, 1)',
+                    backgroundColor: 'rgba(34, 211, 238, 0.2)',
+                    borderColor: 'rgba(34, 211, 238, 1)',
                     borderWidth: 2
                 },
                 {
                     label: 'Descentralização',
                     data: [1, 2, 10],
-                    backgroundColor: 'rgba(147, 51, 234, 0.2)',
-                    borderColor: 'rgba(147, 51, 234, 1)',
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                    borderColor: 'rgba(249, 115, 22, 1)',
                     borderWidth: 2
                 },
                 {
