@@ -35,12 +35,17 @@ O projeto está organizado da seguinte forma:
 
 ```
 .
+├── 📁 docs/           # Documentação técnica detalhada
 ├── 📄 index.html      # Estrutura principal da página
 ├── 🎨 style.css       # Folha de estilos para a aparência visual
 ├── ⚙️ app.js          # Código JavaScript para interatividade e animações
 ├── 📜 LICENSE         # Licença do projeto
 └── 📖 README.md        # Este arquivo
 ```
+
+## 📚 Documentação Técnica
+
+Para informações detalhadas sobre a integração do bot, funcionalidades Web3 e segurança, consulte nossa documentação completa na pasta [`docs/`](./docs/).
 
 ## 🏃 Como Executar
 
