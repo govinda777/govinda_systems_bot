@@ -84,129 +84,145 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.scrollY > 50) {
                 header.style.background = 'rgba(255, 255, 255, 0.98)';
                 header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                header.style.borderBottom = '1px solid var(--color-border)';
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.background = 'transparent';
                 header.style.boxShadow = 'none';
+                header.style.borderBottom = '1px solid transparent';
             }
         });
     }
 
-    // Blue Ocean Strategy Chart
+    // Blue Ocean Strategy Chart - Animate on Scroll
     const chartCanvas = document.getElementById('blueOceanChart');
     if (chartCanvas) {
-        const ctx = chartCanvas.getContext('2d');
-        
-        const chartData = {
-            labels: ['Chatbots Tradicionais', 'Soluções SaaS', 'Govinda Bot Web3'],
-            datasets: [
-                {
-                    label: 'Propriedade do Cliente',
-                    data: [2, 3, 10],
-                    backgroundColor: 'rgba(109, 40, 217, 0.2)',
-                    borderColor: 'rgba(109, 40, 217, 1)',
-                    borderWidth: 2
-                },
-                {
-                    label: 'Inovação Tecnológica',
-                    data: [4, 6, 10],
-                    backgroundColor: 'rgba(34, 211, 238, 0.2)',
-                    borderColor: 'rgba(34, 211, 238, 1)',
-                    borderWidth: 2
-                },
-                {
-                    label: 'Descentralização',
-                    data: [1, 2, 10],
-                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
-                    borderColor: 'rgba(249, 115, 22, 1)',
-                    borderWidth: 2
-                },
-                {
-                    label: 'Modelo Econômico',
-                    data: [3, 5, 10],
-                    backgroundColor: 'rgba(34, 197, 94, 0.2)',
-                    borderColor: 'rgba(34, 197, 94, 1)',
-                    borderWidth: 2
-                },
-                {
-                    label: 'Customização',
-                    data: [5, 7, 10],
-                    backgroundColor: 'rgba(239, 68, 68, 0.2)',
-                    borderColor: 'rgba(239, 68, 68, 1)',
-                    borderWidth: 2
+        const createChart = () => {
+            const ctx = chartCanvas.getContext('2d');
+            const chartData = {
+                labels: ['Chatbots Tradicionais', 'Soluções SaaS', 'Govinda Bot Web3'],
+                datasets: [
+                    {
+                        label: 'Propriedade do Cliente',
+                        data: [2, 3, 10],
+                        backgroundColor: 'rgba(109, 40, 217, 0.2)',
+                        borderColor: 'rgba(109, 40, 217, 1)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Inovação Tecnológica',
+                        data: [4, 6, 10],
+                        backgroundColor: 'rgba(34, 211, 238, 0.2)',
+                        borderColor: 'rgba(34, 211, 238, 1)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Descentralização',
+                        data: [1, 2, 10],
+                        backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                        borderColor: 'rgba(249, 115, 22, 1)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Modelo Econômico',
+                        data: [3, 5, 10],
+                        backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                        borderColor: 'rgba(34, 197, 94, 1)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Customização',
+                        data: [5, 7, 10],
+                        backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        borderWidth: 2
+                    }
+                ]
+            };
+
+            new Chart(ctx, {
+                type: 'radar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 1000,
+                        easing: 'easeInOutQuart'
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true,
+                                font: {
+                                    family: 'Inter',
+                                    size: 12
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Comparativo: Govinda Bot vs Concorrentes',
+                            font: {
+                                family: 'Inter',
+                                size: 16,
+                                weight: '600'
+                            },
+                            padding: {
+                                top: 0,
+                                bottom: 20
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 10,
+                            ticks: {
+                                stepSize: 2,
+                                backdropColor: 'transparent',
+                                color: 'rgba(0, 0, 0, 0.5)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    family: 'Inter',
+                                    size: 11,
+                                    weight: '500'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        }
+                    },
+                    elements: {
+                        point: {
+                            radius: 4,
+                            hoverRadius: 6
+                        },
+                        line: {
+                            borderWidth: 2,
+                            tension: 0.1
+                        }
+                    }
                 }
-            ]
+            });
         };
 
-        new Chart(ctx, {
-            type: 'radar',
-            data: chartData,
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            padding: 20,
-                            usePointStyle: true,
-                            font: {
-                                family: 'Inter',
-                                size: 12
-                            }
-                        }
-                    },
-                    title: {
-                        display: true,
-                        text: 'Comparativo: Govinda Bot vs Concorrentes',
-                        font: {
-                            family: 'Inter',
-                            size: 16,
-                            weight: '600'
-                        },
-                        padding: {
-                            top: 0,
-                            bottom: 20
-                        }
-                    }
-                },
-                scales: {
-                    r: {
-                        beginAtZero: true,
-                        max: 10,
-                        ticks: {
-                            stepSize: 2,
-                            font: {
-                                family: 'Inter',
-                                size: 10
-                            }
-                        },
-                        pointLabels: {
-                            font: {
-                                family: 'Inter',
-                                size: 11,
-                                weight: '500'
-                            }
-                        },
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.1)'
-                        },
-                        angleLines: {
-                            color: 'rgba(0, 0, 0, 0.1)'
-                        }
-                    }
-                },
-                elements: {
-                    point: {
-                        radius: 4,
-                        hoverRadius: 6
-                    },
-                    line: {
-                        borderWidth: 2,
-                        tension: 0.1
-                    }
+        const chartObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    createChart();
+                    observer.unobserve(entry.target);
                 }
-            }
-        });
+            });
+        }, { threshold: 0.5 });
+
+        chartObserver.observe(chartCanvas);
     }
 
     // CTA Button Actions - Fixed to work properly
@@ -413,50 +429,29 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-// Add ripple effect to buttons
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('btn') || e.target.tagName === 'BUTTON') {
-        const button = e.target;
-        const ripple = document.createElement('span');
-        const rect = button.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.style.position = 'absolute';
-        ripple.style.borderRadius = '50%';
-        ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-        ripple.style.pointerEvents = 'none';
-        ripple.style.animation = 'ripple 0.6s ease-out';
-        
-        if (!button.style.position || button.style.position === 'static') {
-            button.style.position = 'relative';
-        }
-        button.style.overflow = 'hidden';
-        
-        button.appendChild(ripple);
-        
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    }
-});
+// Cleaned-up ripple effect for buttons
+function createRipple(event) {
+    const button = event.currentTarget;
 
-// Add CSS for ripple animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes ripple {
-        0% {
-            transform: scale(0);
-            opacity: 0.6;
-        }
-        100% {
-            transform: scale(1);
-            opacity: 0;
-        }
+    const circle = document.createElement("span");
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+    circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+    circle.classList.add("ripple");
+
+    const ripple = button.getElementsByClassName("ripple")[0];
+
+    if (ripple) {
+        ripple.remove();
     }
-`;
-document.head.appendChild(style);
+
+    button.appendChild(circle);
+}
+
+const buttons = document.querySelectorAll(".btn, button");
+buttons.forEach(button => {
+    button.addEventListener("click", createRipple);
+});
